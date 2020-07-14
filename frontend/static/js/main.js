@@ -167,7 +167,7 @@ function buildList(){
 
 function scrape(){
     alert('please wait few seconds for scraping to be done, if the list is not updated after 1 minute, the scraping might be failed due to antiscraping bot');
-    var url = 'http://127.0.0.1:8080/api/scraping'
+    var url = '/api/scraping'
     var formData = new FormData();
     formData.append("check", "secret");
     formData.append("csrfmiddlewaretoken", csrftoken);
