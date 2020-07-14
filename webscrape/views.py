@@ -9,7 +9,7 @@ from webscrape.models import Testing, rent
 from webscrape.serializers import TestingSerializer, PropertySerializer
 from rest_framework.decorators import api_view
 
-from webscrape.scraping_test import scrape
+from webscrape.scraping import scrape
 
 
 @api_view(['GET','POST','DELETE'])
