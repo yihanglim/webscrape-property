@@ -25,7 +25,7 @@ def scrape():
     #headers = ({'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'})
     headers = ({'User-Agent': 'Mozilla/5.0 (Linux; Android 5.1.1; SM-G928X Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.83 Mobile Safari/537.36'})
 
-    for page in range(1, 100):
+    for page in range(1, 3):
         url = "https://www.propertyguru.com.my/property-for-rent" + "/" + str(page)
         r = get(url, headers=headers)
         page = BeautifulSoup(r.text, 'html.parser')
@@ -153,7 +153,7 @@ def scrape():
             #print(response.json())
             return all_property
 
-        time.sleep(randint(1, 5))
+        time.sleep(randint(1, 3))
 
     all_property = [{'links':links1,
             'names':names1,
