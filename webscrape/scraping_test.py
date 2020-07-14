@@ -47,5 +47,3 @@ def scrape():
 
     return data
 
-response = scrape()
-print(response)

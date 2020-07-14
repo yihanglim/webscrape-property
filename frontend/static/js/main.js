@@ -1,18 +1,16 @@
 		/*
 			KEY COMPONENTS:
-			"activeItem" = null until an edit button is clicked. Will contain object of item we are editing
 			"list_snapshot" = Will contain previous state of list. Used for removing extra rows on list update
 
 			PROCESS:
 			1 - Fetch Data and build rows "buildList()"
-			2 - Create Item on form submit
-			3 - Edit Item click - Prefill form and change submit URL
+			2 - Call scrape API to activate data scraping
+			3 - Edit Item - to edit item's detail (still in progress)
 			4 - Delete Item - Send item id to delete URL
-			5 - Cross out completed task - Event handle updated item
+
 
 			NOTES:
-			-- Add event handlers to "edit", "delete", "title"
-			-- Render with strike through items completed
+			-- Add event handlers to "edit", "delete"
 			-- Remove extra data on re-render
 			-- CSRF Token
 		*/
@@ -73,10 +71,6 @@ function buildList(){
             var prices_per_sqft = `<small>RM${list[i].prices_per_sqft}/sqft </small>`
             var images = `<img src="${list[i].images}" alt="opss" style="width:100px;height:100px;">`
 
-
-            if (list[i].completed == true){
-                title = `<strike class="title">${list[i].names}</strike>`
-            }
 
             var item = `
                 <div id="data-row-${i}" class="task-wrapper flex-wrapper">
@@ -203,20 +197,6 @@ function deleteItem(item){
     })
 }
 
-
-function download(){
-    var url = '/api/download';
-    var formData = new FormData();
-    formData.append("check", "secret");
-    formData.append("csrfmiddlewaretoken", csrftoken);
-    fetch(url, {
-        method:'POST',
-        body:formData,
-        })
-    .then(function(){
-
-    })
-}
 
 function alert1(){
  alert('ops, you are not authorised to do so');

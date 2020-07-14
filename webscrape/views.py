@@ -10,7 +10,6 @@ from webscrape.serializers import TestingSerializer, PropertySerializer
 from rest_framework.decorators import api_view
 
 from webscrape.scraping import scrape
-import csv
 
 
 @api_view(['GET','POST','DELETE'])
