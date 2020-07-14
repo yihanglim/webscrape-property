@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dzxp2fvslnlghp^t7fd2ew@u=@$2h#(n(c%nj01#^4pyr#*=4z'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['webscrape-property.herokuapp.com']
 
@@ -88,10 +88,10 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME' : 'propertyguru',
         'CLIENT': {
-        'host' : 'mongodb+srv://yihanglim:propertyguru@cluster0.yggrc.mongodb.net/propertyguru?retryWrites=true&w=majority',
+        'host' : os.environ.get('host'),
         'port' : 27017,
-        'username' : 'yihanglim',
-        'password' : 'propertyguru',
+        'username' : os.environ.get('username'),
+        'password' : os.environ.get('password'),
         'authSource' : 'admin'
         }
     }
