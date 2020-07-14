@@ -25,7 +25,7 @@ SECRET_KEY = 'dzxp2fvslnlghp^t7fd2ew@u=@$2h#(n(c%nj01#^4pyr#*=4z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['webscrape-property.herokuapp.com/']
+ALLOWED_HOSTS = ['webscrape-property.herokuapp.com']
 
 
 # Application definition
