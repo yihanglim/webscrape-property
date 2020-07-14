@@ -153,7 +153,7 @@ def scrape():
             #print(response.json())
             return all_property
 
-        time.sleep(randint(5, 10))
+        time.sleep(randint(1, 5))
 
     all_property = [{'links':links1,
             'names':names1,
