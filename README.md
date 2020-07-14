@@ -61,3 +61,17 @@ PROCESS:
       6 - CSRF Token  
 
 ### Steps to run this:  
+
+1. Download this repo.  
+
+2. Activate your virtual environment.  
+
+3. Run *pip install -r requirements.txt* to install all the neccessary package.  
+
+4. Edit the Secret Key, Database configurations.  
+
+5. Go in to the directory of this project, run *python manage.py runserver* to start the webserver.  
+
+6. Open your browser, type 127.0.0.1:8000 to launch the front page.  
+
+7. Play around with the database, scraping, delete and ENJOY!
