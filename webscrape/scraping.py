@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from requests import get
 import requests
+import csv
 
 import time
 from random import randint
@@ -151,6 +152,13 @@ def scrape():
 
             #response = requests.post(BASE + "api/scraping", json=all_property, headers=headers)
             #print(response.json())
+
+            keys = ['links','names','addresses','states','prices','bedrooms','bathrooms','built_ups','built_years','house_types','furnishings','prices_per_sqft','images']
+            with open('property_data.csv', 'w') as output_file:
+                dict_writer = csv.DictWriter(output_file, fieldnames=keys)
+                dict_writer.writeheader()
+                dict_writer.writerows(all_property)
+
             return all_property
 
         #time.sleep(randint(1, 3))
@@ -170,6 +178,13 @@ def scrape():
             'images':images1}
            for links1, names1, addresses1, states1, prices1, bedrooms1, bathrooms1, built_ups1, built_years1, house_types1, furnishings1, prices_per_sqft1, images1
            in zip(links, names, addresses, states, prices, bedrooms, bathrooms, built_ups, built_years, house_types, furnishings, prices_per_sqft, images)]
+
+    keys = ['links', 'names', 'addresses', 'states', 'prices', 'bedrooms', 'bathrooms', 'built_ups', 'built_years',
+            'house_types', 'furnishings', 'prices_per_sqft', 'images']
+    with open('property_data2.csv', 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, fieldnames=keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(all_property)
 
     return all_property
 

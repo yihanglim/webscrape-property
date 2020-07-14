@@ -41,8 +41,10 @@ var list_snapshot = []
 function buildList(){
     var wrapper = document.getElementById('list-wrapper')
     //wrapper.innerHTML = ''
+    var load = document.getElementById('loading');
 
     var url = '/api/property'
+    load.innerHTML = `<div class="loader" id="loader"></div>`
 
     fetch(url)
     .then((resp)=>resp.json())
@@ -138,7 +140,6 @@ function buildList(){
         for (var i in list){
             var editBtn = document.getElementsByClassName('edit')[i]
             var deleteBtn = document.getElementsByClassName('delete')[i]
-            var title = document.getElementsByClassName('title')[i]
 
             editBtn.addEventListener('click', (function(item){
                 return function(){
@@ -152,22 +153,16 @@ function buildList(){
                 }
             })(list[i]))
 
-            title.addEventListener('click', (function(item){
-                return function(){
-                    strikeUnstrike(item)
-                }
-            })(list[i]))
-
-
         }
+    load.innerHTML = `<div class="hide-loader" id="loader"></div>`
+    });
 
-
-    })
 }
 
 function scrape(){
-    alert('please wait few seconds for scraping to be done, if the list is not updated after 1 minute, the scraping might be failed due to antiscraping bot');
-    var url = '/api/scraping'
+    var load = document.getElementById('loading');
+    load.innerHTML = `<div class="loader" id="loader"></div>`
+    var url = '/api/scraping';
     var formData = new FormData();
     formData.append("check", "secret");
     formData.append("csrfmiddlewaretoken", csrftoken);
@@ -208,6 +203,20 @@ function deleteItem(item){
     })
 }
 
+
+function download(){
+    var url = '/api/download';
+    var formData = new FormData();
+    formData.append("check", "secret");
+    formData.append("csrfmiddlewaretoken", csrftoken);
+    fetch(url, {
+        method:'POST',
+        body:formData,
+        })
+    .then(function(){
+
+    })
+}
 
 function alert1(){
  alert('ops, you are not authorised to do so');

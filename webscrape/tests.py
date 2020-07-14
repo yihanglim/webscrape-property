@@ -12,7 +12,7 @@ proxies = {
 
 headers = {'Content-type':'application/json','Accept':'text/plain'}
 
-response = requests.post(BASE + "api/scraping", data=data)
+response = requests.post(BASE + "api/download", data=data)
 
 print(response.json())
 

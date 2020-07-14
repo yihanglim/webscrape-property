@@ -1,7 +1,7 @@
 import requests
 from rest_framework.response import Response
 from django.http.response import JsonResponse
-
+import csv
 
 def scrape():
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
@@ -37,7 +37,15 @@ def scrape():
     print("data accessed")
     #response = requests.post(BASE + "api/property", json=data, headers=headers)
     #print(response.json())
+
+    keys = ['links', 'names', 'addresses', 'states', 'prices', 'bedrooms', 'bathrooms', 'built_ups', 'built_years',
+            'house_types', 'furnishings', 'prices_per_sqft', 'images']
+    with open('../frontend/static/property_data2.csv', 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, fieldnames=keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(data)
+
     return data
 
-#response = scrape()
-#print(response)
+response = scrape()
+print(response)

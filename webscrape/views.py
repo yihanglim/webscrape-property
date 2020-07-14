@@ -10,6 +10,7 @@ from webscrape.serializers import TestingSerializer, PropertySerializer
 from rest_framework.decorators import api_view
 
 from webscrape.scraping import scrape
+import csv
 
 
 @api_view(['GET','POST','DELETE'])
@@ -75,11 +76,4 @@ def start_scrape(request):
             return JsonResponse({'message':'unauthorised'}, status=status.HTTP_404_NOT_FOUND)
 
 
-'''
-@api_view(['GET'])
-def tutorial_list_published(request):
-    tutorials = Testing.objects.filter(published=True)
-    if request.method == 'GET':
-        tutorials_serializer = TestingSerializer(tutorials, many=True)
-        return JsonResponse(tutorials_serializer.data, safe=False)
-'''
+
